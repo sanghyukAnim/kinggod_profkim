@@ -1,16 +1,15 @@
 package account;
 
-public class Account {
+public abstract class Account {
 	private double balance;
-	private String name;
 	
 	// 출금 메소드 
 	public void debit(double debit) {
 		if(balance >= debit) {
-			System.out.printf("Substracting %f from %s balance\n", debit, name);
+			//System.out.printf("Substracting %f from %s balance\n", debit, name);
 			balance -= debit;
 		} else {
-			System.out.printf("Substracting %f from %s balance\n", debit, name);
+			//System.out.printf("Substracting %f from %s balance\n", debit, name);
 			System.out.printf("Debit amount exceeded account balance\n");
 		}
 	}
@@ -29,9 +28,13 @@ public class Account {
 	}
 	
 	// 생성
-	public Account(double bal, String acName) {
+	public Account(double bal) {
 		balance = bal;
-		name = acName;
 	}
+	
+	
+	// 추상 메소드
+	public abstract void passTime(int a);
+	public abstract double getWithdrawableAccount();
 
 }
