@@ -2,7 +2,7 @@ package account;
 
 public class SavingsAccount extends Account {
 	private double interest;
-	private int month;
+	private int month;	// 월수 계산해서 출금여부 판단에사
 	
 	public void debit(double debit) {
 		if(month < 12) {
@@ -24,12 +24,14 @@ public class SavingsAccount extends Account {
 		}
 	}
 	
+	// 추상 메소드 
 	public void passTime(int a) {
 		int i;
 		for(i=0; i<a; i++) {
 			nextMonth();
 		}
 	}
+	// 추상 메소
 	public double getWithdrawableAccount() {
 		if(month < 12) {
 			return 0.0;
