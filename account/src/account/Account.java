@@ -1,6 +1,6 @@
 package account;
 
-public abstract class Account {
+public abstract class Account implements Valuable {
 	private double balance;
 	
 	// 출금 메소드 
@@ -26,12 +26,12 @@ public abstract class Account {
 	protected void setBalance(double a) {
 		balance = a;
 	}
+
 	
 	// 생성
 	public Account(double bal) {
 		balance = bal;
 	}
-	
 	
 	// 추상 메소드
 	public abstract void passTime(int a);

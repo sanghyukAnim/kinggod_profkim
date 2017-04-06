@@ -58,6 +58,15 @@ public class CheckingAccount extends Account {
 			nextMonth();
 		}
 	}
+	
+	public String toString() {
+		return String.format("CheckingAccount_Balance: %.2f\n", super.getBalance());
+	}
+	
+	public double EstimateValue(int month) {
+		passTime(month);
+		return super.getBalance();
+	}
 
 	
 	

@@ -24,6 +24,10 @@ public class SavingsAccount extends Account {
 		}
 	}
 	
+	public String toString() {
+		return String.format("SavingsAccount_Balance: %.2f\n", super.getBalance());
+	}
+	
 	// 추상 메소드 
 	public void passTime(int a) {
 		int i;
@@ -38,5 +42,10 @@ public class SavingsAccount extends Account {
 		} else {
 			return super.getBalance();
 		}
+	}
+	
+	public double EstimateValue(int month) {
+		passTime(month);
+		return super.getBalance();
 	}
 }
