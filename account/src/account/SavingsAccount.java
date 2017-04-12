@@ -2,14 +2,12 @@ package account;
 
 public class SavingsAccount extends Account {
 	private double interest;
-	private int month;	// 월수 계산해서 출금여부 판단에사
+	private int month = 0;	// 월수 계산해서 출금여부 판단에사
 	
-	public void debit(double debit) {
-		if(month < 12) {
-			System.out.println("아직 출금할 수 없습니다! ");
-		} else {
-			super.setBalance(super.getBalance() - debit);
-		}
+	public void debit(double debit) throws Exception {
+		if(month < 12) throw new Exception("아직 출금할 수 없습니다!\n ");
+		if(debit < 0) throw new Exception("음수입력!\n");
+		else {super.setBalance(super.getBalance() - debit);}
 	}
 	
 	public SavingsAccount(int a, double b) {

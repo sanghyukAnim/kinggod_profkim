@@ -4,7 +4,7 @@ public abstract class Account implements Valuable {
 	private double balance;
 	
 	// 출금 메소드 
-	public void debit(double debit) {
+	public void debit(double debit) throws Exception{
 		if(balance >= debit) {
 			//System.out.printf("Substracting %f from %s balance\n", debit, name);
 			balance -= debit;

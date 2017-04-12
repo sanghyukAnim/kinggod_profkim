@@ -27,12 +27,10 @@ public class CheckingAccount extends Account {
 		}
 	}
 	
-	@Override public void debit(double a) {
-		if(a>getWithdrawableAccount()) {
-			System.out.println("Debit amount exceeded account balance\n");
-		} else {
-			super.setBalance(super.getBalance() - a);
-		}
+	@Override public void debit(double a) throws Exception{
+		if(a>getWithdrawableAccount()) throw new Exception("Debit amount exceeded account balance\n");
+		if(a < 0) throw new Exception("음수입력!\n");
+		else {super.setBalance(super.getBalance() - a);}
 	}
 	
 	public void nextMonth() {
