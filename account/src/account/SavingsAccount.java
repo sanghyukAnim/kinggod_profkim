@@ -3,6 +3,7 @@ package account;
 public class SavingsAccount extends Account {
 	private double interest;
 	private int month = 0;	// 월수 계산해서 출금여부 판단에사
+	private double savingBalance;
 	
 	public void debit(double debit) throws Exception {
 		if(month < 12) throw new Exception("아직 출금할 수 없습니다!\n ");
@@ -13,6 +14,7 @@ public class SavingsAccount extends Account {
 	public SavingsAccount(int a, double b) {
 		super(a);
 		interest = b;
+		savingBalance = a;
 	}
 	
 	public void nextMonth() {
@@ -33,6 +35,9 @@ public class SavingsAccount extends Account {
 			nextMonth();
 		}
 	}
+	public void passTime() {
+		passTime(1);
+	}
 	// 추상 메소
 	public double getWithdrawableAccount() {
 		if(month < 12) {
@@ -42,8 +47,19 @@ public class SavingsAccount extends Account {
 		}
 	}
 	
-	public double EstimateValue(int month) {
+	public double estimateValue(int month) {
 		passTime(month);
 		return super.getBalance();
+	}
+	public double estimateValue() {
+		return estimateValue(1);
+	}
+	
+	@Override public double getBalance() {
+		if(month < 12) {
+			return savingBalance;
+		} else {
+			return super.getBalance();
+		}
 	}
 }

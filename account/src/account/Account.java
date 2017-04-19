@@ -35,6 +35,7 @@ public abstract class Account implements Valuable {
 	
 	// 추상 메소드
 	public abstract void passTime(int a);
+	public abstract void passTime();
 	public abstract double getWithdrawableAccount();
 
 }

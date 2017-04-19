@@ -43,11 +43,11 @@ public class CheckingAccount extends Account {
 		}
 	}
 	
-	public int isBankrupt() {
+	public boolean isBankrupted() {
 		if(getWithdrawableAccount() < 0) {
-			return -1;
+			return false;
 		} else {
-			return 1;
+			return true;
 		}
 	}
 	public void passTime(int a) {
@@ -56,16 +56,19 @@ public class CheckingAccount extends Account {
 			nextMonth();
 		}
 	}
+	public void passTime() {
+		passTime(1);
+	}
 	
 	public String toString() {
 		return String.format("CheckingAccount_Balance: %.2f\n", super.getBalance());
 	}
 	
-	public double EstimateValue(int month) {
+	public double estimateValue(int month) {
 		passTime(month);
 		return super.getBalance();
 	}
-
-	
-	
+	public double estimateValue() {
+		return estimateValue(1);
+	}
 }
