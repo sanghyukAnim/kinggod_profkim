@@ -1,4 +1,5 @@
 package account;
+import java.util.*;
 
 public abstract class Account implements Valuable {
 	private double balance;
@@ -25,6 +26,20 @@ public abstract class Account implements Valuable {
 	
 	protected void setBalance(double a) {
 		balance = a;
+	}
+	
+	public static double sumForAccount(ArrayList<? extends Account> list) {
+		double sum = 0;
+		for(Account account : list) {
+			sum += account.getBalance();
+		}
+		return sum;
+	}
+	
+	public static void passTimeforList(ArrayList<? extends Account> list, int month) {
+		for(Account account : list) {
+			account.passTime(month);
+		}
 	}
 
 	
